@@ -111,6 +111,8 @@ html {
 
 .wrapper {
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .container {
@@ -207,7 +209,17 @@ html {
 
 .footer {
   background-color: #8D9398;
-  height: 30vh;
+  color: white;
+  padding: 2em;
+}
+.footer__whatsapp-container {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+.footer__whatsapp-container img {
+  height: 60px;
 }
 
 .prices-section {
