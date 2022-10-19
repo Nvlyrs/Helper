@@ -8,7 +8,8 @@
 }
 
 *, *:before, *:after {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 :focus, :active {
@@ -75,19 +76,41 @@ h1, h2, h3, h4, h5, h6 {
 .header__row {
   position: relative;
   z-index: 5;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 2em;
 }
 .header__nav-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2em;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+@supports (gap: 2em) {
+  .header__nav-list {
+    gap: 2em;
+  }
+}
+@supports not (gap: 2em) {
+  .header__nav-list > * + * {
+    margin-left: 1rem;
+  }
 }
 .header__nav-link {
   transition: -webkit-filter 0.3s ease-in-out;
+  -webkit-transition: -webkit-filter 0.3s ease-in-out;
+  -o-transition: filter 0.3s ease-in-out;
   transition: filter 0.3s ease-in-out;
   transition: filter 0.3s ease-in-out, -webkit-filter 0.3s ease-in-out;
   color: #404040;
@@ -99,8 +122,13 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 720px) {
   .header__row {
-    flex-direction: column;
-    justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
 }
 html {
@@ -111,8 +139,13 @@ html {
 
 .wrapper {
   overflow-x: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .container {
@@ -168,9 +201,16 @@ html {
   border: 0.0625em solid black;
   border-radius: 0.75em;
   background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 .price-card__title {
   padding: 0.8em;
@@ -193,7 +233,9 @@ html {
 .price-card__btn {
   display: block;
   margin: 0 auto;
-  transform: translateY(50%);
+  -webkit-transform: translateY(50%);
+      -ms-transform: translateY(50%);
+          transform: translateY(50%);
 }
 
 .btn {
@@ -201,10 +243,15 @@ html {
   color: white;
   padding: 1.1em 4em;
   border-radius: 6.25em;
+  -webkit-transition: -webkit-box-shadow 0.3s ease-in-out;
+  transition: -webkit-box-shadow 0.3s ease-in-out;
+  -o-transition: box-shadow 0.3s ease-in-out;
   transition: box-shadow 0.3s ease-in-out;
+  transition: box-shadow 0.3s ease-in-out, -webkit-box-shadow 0.3s ease-in-out;
 }
 .btn:hover {
-  box-shadow: 2px 2px 0px #DCB21E, 4px 4px 0px #B00000;
+  -webkit-box-shadow: 2px 2px 0px #DCB21E, 4px 4px 0px #B00000;
+          box-shadow: 2px 2px 0px #DCB21E, 4px 4px 0px #B00000;
 }
 
 .footer {
@@ -214,8 +261,12 @@ html {
 }
 .footer__whatsapp-container {
   cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 1em;
 }
 .footer__whatsapp-container img {
@@ -235,15 +286,24 @@ html {
   z-index: 2;
 }
 .prices-section__grid-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   gap: 3.5em;
   row-gap: clamp(2.5em, 13.8888888889vh, 4.5em);
-  align-items: stretch;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
 }
 .prices-section__grid-item {
-  flex: 1 0 max(280px, 30%);
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 max(280px, 30%);
+          flex: 1 0 max(280px, 30%);
 }
 .prices-section__svg {
   position: absolute;
@@ -274,10 +334,14 @@ html {
   line-height: 1.5;
 }
 .about-section__row {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 .about-section__image-container {
-  flex: 0 1 50%;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 50%;
+          flex: 0 1 50%;
 }
 .about-section__text-container {
   padding-left: 2em;
@@ -303,17 +367,36 @@ html {
 .main-section__container {
   position: relative;
   max-width: 1000px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   height: 100%;
   z-index: 5;
 }
 .main-section__row {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 3em;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 100%;
+}
+@supports (gap: 3em) {
+  .main-section__row {
+    gap: 3em;
+  }
+}
+@supports not (gap: 3em) {
+  .main-section__row > * + * {
+    margin-left: 3rem;
+  }
 }
 .main-section__title {
   max-width: 20ch;
@@ -355,8 +438,13 @@ html {
 }
 @media (max-width: 720px) {
   .main-section__row {
-    flex-direction: column-reverse;
-    justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
   .main-section__background-shape-1 {
     top: -2em;
@@ -426,5 +514,3 @@ html {
     display: block;
   }
 }
-
-/*# sourceMappingURL=style.css.map */
